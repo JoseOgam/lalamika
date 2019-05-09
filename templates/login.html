@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load bulma_tags %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    {% include 'nav.html' %}
+    <section class="hero is-medium is-medium-with-navbar">
+     <h3 class="title is-size-6 has-text-centered">Please log in to your account</h3>
+        <div class="hero-head"></div>
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns is-mobile">
+                    <div class="column is-half is-offset-one-third is-centered"
+                         style="background-color: white; padding: 10px 20px;">
+                        <form action="" method="post">
+                              {% csrf_token %}
+                          {{ form | bulma }}
+                            <div>
+                              <button class="button is-link" type="submit">Login</button>
+                            </div>
+                        </form>
+                        <div class="field" style="margin: 20px 0;">
+                            <small>
+                                are you new?
+                                <a href="{% url 'register' %}">Sign Up</a>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

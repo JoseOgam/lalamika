@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bulma_tags %}
+{% block content %}
+    {% include 'nav.html' %}
+     <section class="hero is-medium is-medium-with-navbar">
+        <!-- Hero head: will stick at the top -->
+        <div class="hero-head">
+
+        </div>
+
+        <!-- Hero content: will be in the middle -->
+        <div class="hero-body">
+            <div class="container">
+        <div class="columns is-mobile">
+            <div class="column is-half is-offset-one-quarter is-centered" style="background-color: white; padding: 10px 20px;">
+                <h3 class="title is-size-4 ">lalamika</h3>
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    {{ form | bulma }}
+                    <div class="">
+                        <button type="submit" class="button is-link" style="width: 100%;">Register</button>
+                    </div>
+                </form>
+                <div class="field">
+                    <small>
+                        Already Have An Account?
+                        <a href="{% url 'login' %}">Sign In</a>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </section>
+{% endblock content %}
