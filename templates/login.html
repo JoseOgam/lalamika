@@ -6,25 +6,35 @@
 {% block content %}
     {% include 'nav.html' %}
     <section class="hero is-medium is-medium-with-navbar">
-     <h3 class="title is-size-6 has-text-centered">Please log in to your account</h3>
         <div class="hero-head"></div>
         <div class="hero-body">
             <div class="container">
                 <div class="columns is-mobile">
-                    <div class="column is-half is-offset-one-third is-centered"
+                    <div class="column is-half is-offset-one-quarter is-centered"
                          style="background-color: white; padding: 10px 20px;">
-                        <form action="" method="post">
-                              {% csrf_token %}
-                          {{ form | bulma }}
-                            <div>
-                              <button class="button is-link" type="submit">Login</button>
+                        <h3 class="title has-text-grey has-text-centered">Login</h3>
+                        <p class="subtitle has-text-grey has-text-centered">Please login to proceed.</p>
+                        <div class="box">
+                            <figure class="avatar">
+                                <img src="https://placehold.it/128x128" align="center">
+                            </figure>
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                {{ form | bulma }}
+                                <div>
+                                    <button class="button is-block is-info is-fullwidth" type="submit">Login</button>
+                                </div>
+                            </form>
+                            <div class="field" style="margin: 20px 0;">
+                                <p class="has-text-grey">
+                                <small>
+
+                                    <a href="{% url 'register' %}">Sign Up</a> &nbsp;&nbsp;
+                                     <a href="#">forgot password</a>   &nbsp;&nbsp;
+                                     <a href="#">Need help?</a>
+                                </small>
+                                </p>
                             </div>
-                        </form>
-                        <div class="field" style="margin: 20px 0;">
-                            <small>
-                                are you new?
-                                <a href="{% url 'register' %}">Sign Up</a>
-                            </small>
                         </div>
                     </div>
                 </div>
