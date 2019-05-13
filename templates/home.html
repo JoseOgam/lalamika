@@ -1,28 +1,50 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    lalamika | Home
+{% endblock %}
 {% block content %}
- {% include 'nav.html' %}
-    <section class="hero is-info is-large">
+    {% include 'nav.html' %}
+    <section class="hero is-fullheight is-link is-fullheight-with-navbar is-mobile" id="index-hero">
+        <!-- Hero head: will stick at the top -->
         <div class="hero-head">
 
         </div>
 
+        <!-- Hero content: will be in the middle -->
         <div class="hero-body">
             <div class="container has-text-centered">
-                <p class="title">
-                    Students Results Complaint Management System
-                </p>
-                <p class="subtitle">
-                    lalamika
-                </p>
+                <div class="columns is-mobile is-vcentered">
+                    <div class="column is-6">
+                        <img class="is-centered" src="{% static 'bulma/images/git.png' %}" style="width: 320px;">
+                    </div>
+                    <div class="column is-6" style="margin-top: 5px; padding: 0 35px;">
+                        <h1 class="title" id="title-index">
+                            Students Result Complaint Management System
+                        </h1>
+                        <h2 class="subtitle" id="subtitle-index">
+                            lalamika
+                        </h2>
+                        <p class="has-text-centered">
+                            <a href="#help" class="button is-mobile is-primary is-outlined">
+                                <span id="try-span">help</span>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+
             </div>
         </div>
 
-        <div class="hero-foot">
-            <nav class="tabs is-boxed is-fullwidth">
-                <div class="container">
+        <!-- Hero footer: will stick at the bottom -->
+        <div class="hero-foot"></div>
+    </section>
+    <section class="section" id="help">
+        <div class="section-heading has-text-centered">
+            <h3 class="title is-4">Help</h3>
+        </div>
+        <div class="container is-fluid">
 
-                </div>
-            </nav>
         </div>
     </section>
 {% endblock %}

@@ -16,7 +16,7 @@
                         <p class="subtitle has-text-grey has-text-centered">Please login to proceed.</p>
                         <div class="box">
                             <figure class="avatar">
-                                <img src="https://placehold.it/128x128" align="center">
+                                <img class="is-centered" src="https://placehold.it/128x128">
                             </figure>
                             <form action="" method="post">
                                 {% csrf_token %}
@@ -28,7 +28,7 @@
                             <div class="field" style="margin: 20px 0;">
                                 <p class="has-text-grey">
                                 <small>
-
+                                 are you new?
                                     <a href="{% url 'register' %}">Sign Up</a> &nbsp;&nbsp;
                                      <a href="#">forgot password</a>   &nbsp;&nbsp;
                                      <a href="#">Need help?</a>
