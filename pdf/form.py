@@ -1,6 +1,6 @@
 from django import forms
 from . import models
-from .models import Viewtranscript
+from .models import Viewtranscript, Complaints
 
 
 class UserTranscriptForm(forms.ModelForm):
@@ -10,3 +10,12 @@ class UserTranscriptForm(forms.ModelForm):
     class Meta:
         model = Viewtranscript
         fields = ['my_sem', ]
+
+
+class UserComplaintsForm(forms.ModelForm):
+    title = forms.CharField(max_length=30)
+    description = forms.CharField(help_text='create your complaint here', widget=forms.Textarea)
+
+    class Meta:
+        model = Complaints
+        fields = ['title', 'description']

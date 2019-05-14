@@ -26,5 +26,13 @@ class Transcript(models.Model):
     #     return "{user} ({semester}) [{unit}]".format(user=self.user, semester=self.semester, unit=self.unit)
 
 
+class Complaints(models.Model):
+    user = models.ForeignKey(to=settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.CASCADE)
+    title = models.CharField(max_length=30)
+    description = models.TextField(max_length=200)
+    regno = models.CharField(max_length=30)
+    status = models.CharField(max_length=30)
+
+
 class Viewtranscript(models.Model):
     my_sem = models.CharField(max_length=20)
