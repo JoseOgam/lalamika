@@ -11,4 +11,4 @@ class UserProfile(AbstractUser):
     data_register = models.DateField(auto_now_add=True, )
 
     def __str__(self):
-        return self.name
+        return '{name} ({regno})'.format(name=self.name, regno=self.regno, )

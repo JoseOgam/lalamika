@@ -2,31 +2,31 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .form import UserTranscriptForm, UserComplaintsForm
+from . import models
 
 
-# Create your views here.
+# Create your views
 @login_required()
-def transcript_view(request):
-    if request.method == 'POST':
-        get_sem = request.POST.get('my_sem')
-        # my_transcript = Transcript.objects.filter(semester_id=get_sem).filter(user_id=request.user.id)
-        print(get_sem)
-
-    form = UserTranscriptForm()
+def transcript_view(request, id):
+    transcript = models.Transcript.objects.get(id=id)
+    results = models.Result.objects.filter(transcript=transcript)
     context = {
-        'form': form,
-        # 'my_transcript': my_transcript
+        'transcript': transcript,
+        'results': results
     }
 
-    return render(request, 'transcript.html', context)
+    return render(request, 'view_transcript.html', context)
 
 
 @login_required()
-def complaint_view(request):
+def complaint_view(request, id):
     if request.method == 'POST':
         form = UserComplaintsForm(request.POST)
         if form.is_valid():
-            form.save()
+            current_user = request.user.id
+            title = request.POST.get('title')
+            description = request.POST.get('description')
+            models.Complaints.objects.create(title=title, description=description, user_id=current_user, transcript_id=id)
             messages.success(request, 'complaint created successfully!')
             return redirect('index')
     else:

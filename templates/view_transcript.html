@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load bulma_tags %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    {% include 'nav.html' %}
+    <section class="hero is-size-4-mobile is-size-4 is-info is-bold">
+        <div class="hero-body">
+            <h1>{{ transcript.semester.sem }}</h1>
+        </div>
+        <div class="hero-foot">
+            <div class="compose has-text-centered">
+                <a class="button is-danger is-block is-bold" href="{% url 'complaints' transcript.id %}">
+                    <span class="compose">create complaint here</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    <section>
+        <table class="table" style="width: 100%; overflow-x: auto;">
+            <thead class="" style="width: 100%; overflow-x: auto;">
+            <tr>Unit Code</tr>
+            <tr>Unit Title</tr>
+            <tr>Mark</tr>
+            </thead>
+            <tbody>
+            {% for result in results %}
+                <tr>
+                    <td>{{ result.unit.name }}</td>
+                    <td>{{ result.unit.title }}</td>
+                    <td>{{ result.marks }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+{% endblock %}

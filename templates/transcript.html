@@ -13,18 +13,35 @@
                     <div class="column is-half is-offset-one-quarter is-centered"
                          style="background-color: white; padding: 10px 20px;">
                         <div class="box">
-                            <form action="" method="post">
+                            <form action="" method="POST">
                                 {% csrf_token %}
                                 {{ form | bulma }}
                                 <div>
                                     <button class="button is-block is-info is-medium" type="submit">select</button>
+{#                               <a class="button is-info" href="{% url 'transcript' semester.id %}">#}
+{#                                   select#}
+{##}
+{#                               </a>#}
                                 </div>
                             </form>
-
+                            {# <table class="table-profile">#}
+                              {#   <tbody>#}
+                              {#    <tr>#}
+                               {#     <th colspan="1">unit</th>#}
+                                    {#<th colspan="2">marks</th>#}
+                               {# </tr>#}
+                                {#  {% for myunit in my_transcript %}#}
+                                {#<tr>#}
+                                    {# <td>{{ myunit.unit }}</td>#}
+                                   {#  <td>{{ myunit.marks }}</td>#}
+                                {#</tr>#}
+                                {# {% endfor %}#}
+                                {#</tbody>#}
+                           {# </table>#}
                         </div>
+                    </div>
                 </div>
             </div>
-        </div>
         </div>
     </section>
 {% endblock %}
