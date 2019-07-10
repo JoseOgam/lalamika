@@ -40,7 +40,20 @@ class Complaints(models.Model):
 class Result(models.Model):
     unit = models.ForeignKey(to=Unit, on_delete=models.CASCADE)
     transcript = models.ForeignKey(to=Transcript, on_delete=models.CASCADE)
+    cat = models.DecimalField(decimal_places=1, max_digits=13, null=True)
+    final = models.DecimalField(decimal_places=1, max_digits=13, null=True)
     marks = models.DecimalField(decimal_places=1, max_digits=13)
+    grade = models.CharField(max_length=20, null=True)
+
+
+class Lecturer(models.Model):
+    name = models.CharField(max_length=20)
+    contacts = models.CharField(max_length=20)
+    unit = models.ForeignKey(to=Unit, on_delete=models.CASCADE)
+    semester = models.ForeignKey(to=Semester, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
 
 
 class Viewtranscript(models.Model):

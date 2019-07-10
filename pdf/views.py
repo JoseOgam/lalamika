@@ -1,6 +1,8 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+
+from pdf.models import Lecturer
 from .form import UserTranscriptForm, UserComplaintsForm
 from . import models
 
@@ -19,6 +21,17 @@ def transcript_view(request, id):
 
 
 @login_required()
+def lecturer_view(request):
+    lecturers = Lecturer.objects.all()
+    context = {
+        'lecturers': lecturers
+
+    }
+
+    return render(request, 'lecturer.html', context)
+
+
+@login_required()
 def complaint_view(request, id):
     if request.method == 'POST':
         form = UserComplaintsForm(request.POST)
@@ -26,7 +39,8 @@ def complaint_view(request, id):
             current_user = request.user.id
             title = request.POST.get('title')
             description = request.POST.get('description')
-            models.Complaints.objects.create(title=title, description=description, user_id=current_user, transcript_id=id)
+            models.Complaints.objects.create(title=title, description=description, user_id=current_user,
+                                             transcript_id=id)
             messages.success(request, 'complaint created successfully!')
             return redirect('index')
     else:

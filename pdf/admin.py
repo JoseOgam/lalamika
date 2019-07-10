@@ -15,9 +15,13 @@ class ComplaintAdmin(admin.ModelAdmin):
     list_per_page = 50
     list_editable = ('status',)
 
+    class LecturerAdmin(admin.ModelAdmin):
+        list_display = ('name', 'unit', 'semester', 'transcript')
+
 
 admin.site.register(models.Transcript, TranscriptAdmin)
 admin.site.register(models.Complaints, ComplaintAdmin)
 admin.site.register(models.Semester)
 admin.site.register(models.Unit)
 admin.site.register(models.Result)
+admin.site.register(models.Lecturer)

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load bulma_tags %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    {% include 'nav.html' %}
+    <section class="hero is-size-4-mobile is-size-4 is-info is-bold">
+        <div class="hero-body">
+            <h1>lecturers contacts</h1>
+        </div>
+    </section>
+    <section>
+        <table class="table is-bordered is-hoverable" style="width: 100%; overflow-x: auto;">
+            <thead class="" style="width: 100%; overflow-x: auto;">
+            <tr>
+                <th>Name</th>
+                <th>Contacts</th>
+                <th>Unit</th>
+                <th>Semester</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for lecturer in lecturers %}
+                <tr>
+                    <td>{{ lecturer.name }}</td>
+                    <td>{{ lecturer.contacts }}</td>
+                    <td>{{ lecturer.unit.name }}</td>
+                    <td>{{ lecturer.semester.sem }}</td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+{% endblock %}
