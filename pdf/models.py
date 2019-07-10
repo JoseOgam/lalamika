@@ -38,12 +38,14 @@ class Complaints(models.Model):
 
 
 class Result(models.Model):
+    user = models.ForeignKey(to=settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.CASCADE)
     unit = models.ForeignKey(to=Unit, on_delete=models.CASCADE)
     transcript = models.ForeignKey(to=Transcript, on_delete=models.CASCADE)
     cat = models.DecimalField(decimal_places=1, max_digits=13, null=True)
     final = models.DecimalField(decimal_places=1, max_digits=13, null=True)
     marks = models.DecimalField(decimal_places=1, max_digits=13)
     grade = models.CharField(max_length=20, null=True)
+
 
 
 class Lecturer(models.Model):

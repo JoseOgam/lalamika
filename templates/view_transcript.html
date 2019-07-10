@@ -8,7 +8,7 @@
     <section class="hero is-size-4-mobile is-size-4 is-info is-bold">
         <div class="hero-body">
             <h1>{{ transcript.semester.sem }}</h1>
-            <a class="button is-danger is-rounded" href="{% url 'lecturer' %}">Rounded</a>
+            <a class="button is-danger is-rounded align-right" href="{% url 'lecturer' %}">Contact lecturer</a>
         </div>
         <div class="hero-foot">
             <div class="compose has-text-centered">
@@ -24,7 +24,7 @@
             <tr>
                 <th>Unit Code</th>
                 <th>Unit Title</th>
-                <th>Mark</th>
+                <th>Grade</th>
             </tr>
             </thead>
             <tbody>
@@ -32,10 +32,25 @@
                 <tr>
                     <td>{{ result.unit.name }}</td>
                     <td>{{ result.unit.title }}</td>
-                    <td>{{ result.marks }}</td>
+                    <td>{{ result.grade }}</td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
+    </section>
+    <section>
+    <div>
+        <h5><b>Note</b></h5>
+        <ul>
+            <li>70-100=A</li>
+             <li>60-69=B</li>
+             <li>50-59=C</li>
+             <li>40-49=D</li>
+             <li>0-39=F</li>
+             <li>- = missing mark</li>
+             <li>*= supplementary</li>
+
+        </ul>
+    </div>
     </section>
 {% endblock %}
